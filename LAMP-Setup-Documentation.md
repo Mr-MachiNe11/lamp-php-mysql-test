@@ -22,7 +22,9 @@ sudo apt install php libapache2-mod-php php-mysql
 sudo mkdir -p /var/www/your_domain
 sudo chown -R $USER:$USER /var/www/your_domain
 sudo nano /etc/apache2/sites-available/your_domain.conf
+
 Sample config:
+
 <VirtualHost *:80>
     ServerName rinku-test.local
     ServerAlias www.rinku-test.local
@@ -31,9 +33,11 @@ Sample config:
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
+
 </VirtualHost>
 
 Then:
+
 sudo a2ensite rinku.test.conf
 sudo a2dissite 000-default.conf
 sudo systemctl reload apache2
@@ -42,13 +46,19 @@ sudo systemctl reload apache2
 4. PHP Info Test
 
 nano /var/www/your_domain/info.php
+
 Contents:
+
 <?php
 phpinfo(); 
 ?>
+
 Access:
+
 http://your_domain/info.php
+
 Remove it after testing:
+
 sudo rm /var/www/your_domain/info.php
 
 5. MySQL Database and User Creation
@@ -56,9 +66,10 @@ sudo rm /var/www/your_domain/info.php
 CREATE DATABASE test_db;
 CREATE USER 'rinku'@'%' IDENTIFIED BY '1qaz';
 GRANT ALL ON test_db.* TO 'rinku'@'%';
-Test login:
-mysql -u rinku -p
 
+Test login:
+
+mysql -u rinku -p
 
 
 6. Create and Populate Table
@@ -81,7 +92,9 @@ INSERT INTO test_db.todo_list (content) VALUES ("Fix bugs");
 7. PHP Script to Read MySQL Data
 
 nano /var/www/your_domain/todo_list.php
+
 Contents:
+
 <?php
 $user = "rinku";
 $password = "1qaz";
