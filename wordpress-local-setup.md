@@ -19,7 +19,7 @@ $ sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql
 $ sudo mysql
 
 CREATE DATABASE wp_db;
-CREATE USER 'wp_rinku'@'localhost' IDENTIFIED BY '1qaz';
+CREATE USER 'wp_rinku'@'localhost' IDENTIFIED BY '****';
 GRANT ALL PRIVILEGES ON wp_db.* TO 'wp_rinku'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
@@ -59,7 +59,7 @@ Go to http://wordpress.rinku.test and follow:
 
 DB Name: wp_db
 Username: wp_rinku
-Password: 1qaz
+Password: ****
 Host: localhost
 Table Prefix: wp_
 
