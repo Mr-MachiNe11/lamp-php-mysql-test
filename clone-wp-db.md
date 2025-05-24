@@ -12,6 +12,7 @@ mysqldump -u root -p wp_db > wp_db_dump.sql
 
 This creates a dump of the wp_db database in a file named wp_db_dump.sql.
 
+
 2. Create a New Database and User
 Login to MySQL:
 
@@ -25,9 +26,11 @@ FLUSH PRIVILEGES;
 EXIT;
 
 
+
 3. Import the Dump into the New Database
 
 mysql -u root -p wp_clone < wp_db_dump.sql
+
 
 
 4. Update WordPress to Use the New Database
@@ -43,9 +46,11 @@ define( 'DB_USER', 'wp_user' );
 define( 'DB_PASSWORD', '1qaz' );
 
 
+
 5. Restart Apache (Optional but Recommended)
 
 $ sudo systemctl restart apache2
+
 
 
 6. Test in Browser
@@ -59,13 +64,18 @@ http://wordpress.rinku.test
 🐬 Optional: View Databases in DBeaver
 🛠️ Setup MySQL Connection
 
+
 Open DBeaver.
+
 
 Click Database → New Database Connection.
 
+
 Select MySQL, then click Next.
 
+
 Use the following credentials:
+
 
 Host: 127.0.0.1
 Port: 3306
@@ -73,16 +83,21 @@ Database: wp_clone
 Username: wp_user
 Password: ****
 
+
 Click Test Connection, then Finish.
 
 🔧 Ensure MySQL Is Listening on 127.0.0.1
 
+
 Edit /etc/mysql/mysql.conf.d/mysqld.cnf:
+
 
 bind-address = 127.0.0.1
 Then restart MySQL:
 
+
 $ sudo systemctl restart mysql
+
 
 
 ✅ Result
